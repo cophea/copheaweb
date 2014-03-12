@@ -1,0 +1,111 @@
+<div ng-include src="'partials/public/header_manage.html'"></div>  
+  <div class="container">
+<div class="bs-example bs-example-tabs">
+      <ul id="myTab" class="nav nav-tabs">
+        <li class="active"><a href="#profile" data-toggle="tab">员工设置</a></li>
+        <li class=""><a href="#dropdown1" data-toggle="tab">表单设置</a></li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="profile">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>账号</th>
+                <th>姓名</th>
+                <th>开通</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>lianxiang:001</td>
+                <td>张三</td>
+                <td><a class="btn btn-danger">关闭</a></td>
+              </tr>
+              <tr>
+                <td>lianxiang:002</td>
+                <td></td>
+                <td><a class="btn btn-danger">开通</a></td>
+              </tr>
+              <tr>
+                <td>lianxiang:003</td>
+                <td></td>
+                <td><a class="btn btn-danger">开通</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="dropdown1">
+          <form class="form-horizontal" role="form">
+            <legend>会员表单</legend>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>功能</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>手机</td>
+                <td><a class="btn btn-danger">需要</a></td>
+              </tr>
+              <tr>
+                <td>生日</td>
+                <td><a class="btn btn-danger">需要</a></td>
+              </tr>
+              <tr>
+                <td>年龄</td>
+                <td><a class="btn btn-danger">需要</a></td>
+              </tr>
+              <tr>
+                <td>QQ</td>
+                <td><a class="btn btn-danger">需要</a></td>
+              </tr>
+            </tbody>
+          </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 侧边导航 -->
+  <nav class="app-switcher">
+    <ul class="list list-tabs">
+      <li>
+        <a href="#/cardcategory" class="app">
+          <span class="fa fa-credit-card"></span>
+          <span>会员卡</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#/member" class="app">
+          <span class="fa fa-users"></span>
+          <span>会员</span>
+        </a>  
+      </li>
+      <li>
+        <a href="#/credit" class="app">
+          <span class="fa fa-gift"></span>
+          <span>兑换</span>
+        </a>  
+      </li>
+      <li>
+        <a href="#/analysis" class="app">
+          <span class="fa fa-clock-o"></span>
+          <span>回顾</span>
+        </a>  
+      </li>
+      <li>
+        <a href="#/setting" class="app active">
+          <span class="fa fa-cogs"></span>
+          <span>偏好</span>
+        </a>  
+      </li>
+    </ul>
+  </nav>
+  <script>
+    $('#myTab a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    })
+  </script>

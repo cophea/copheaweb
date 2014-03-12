@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>注册 － 加入cophea</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="./assets/image/cophealogo-s.png">
+    <link rel='stylesheet' href='https://dn-ui.qbox.me/v319/UI/css/teambition-ui.css'>
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <style>
+      a > img{
+       display:none;
+      }
+      .placeholder{
+        color: #a6a6a6;
+      }
+      input.form-control{
+        padding: 15px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <aside style="background-image: url(./assets/image/login.jpg);" class="aside-bar">
+      <div class="aside-bar-container"></div>
+    </aside>
+    <section class="content"><a href="/" class="brand">
+        <h1>cophea</h1></a>
+      <div class="form-unit">
+        <h2>立即开始会员系统</h2>
+        <form id="ajax_register_form" class="signup-form form-horizontal">
+          <input type="text" id="corp_name" name="corp_name" placeholder="请输入机构名称" required class="form-control">
+          <input type="email" id="email" name="email" placeholder="你邮箱账号(you@example.com)" required class="form-control">
+          <input type="text" id="uname" name="uname" placeholder='您的名字' required class="form-control">
+          <input type="password" id="password" placeholder='密码(字母，数字，至少6位)' name="password" required class="form-control">
+          <input type="hidden" name="refer" value="" class="form-control">
+          <input type="hidden" name="access_token" value="" class="form-control">
+          <input type="hidden" name="avatarUrl" value="" class="form-control">
+          <input type="hidden" name="projectHash" value="" class="form-control">
+          <input type="hidden" name="s" value="" class="form-control">
+          <br>
+          <div class="action-wrapper">
+            <button type="button" onclick="registe();" class="btn btn-primary btn-large">立即注册</button><a href="login.html" class="signup">登录</a><span><!--|</span><a href="/forgot" class="forget">找回密码</a>-->
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="https://dn-st.qbox.me/pages/scripts/analytics.js"></script>
+    <script src="https://dn-st.qbox.me/pages/scripts/jquery.min.js"></script>
+    <script src="https://dn-st.qbox.me/pages/scripts/jquery.placeholder.js"></script>
+    <script type="text/javascript">
+      $('input, textarea').placeholder();
+      function registe(){
+
+        var register_form = $("#ajax_register_form");
+        var corp_name = $('#corp_name');
+        var email = $('#email');
+        var uname = $('#uname');
+        var password = $('#password');
+
+        if(corp_name.val().length == 0) {
+          $('#corp_name').focus();
+          return false;
+        }
+
+        if(email.val().length == 0) {
+          $('#email').focus();
+          return false;
+        }  
+        if(uname.val().length == 0) {
+          $('#uname').focus();
+          return false;
+        }  
+        if(password.val().length == 0) {
+          $('#password').focus();
+          return false;
+        }  
+
+        $.ajax({
+           url:'http://localhost:10088/cophea/copheaserver/api/Register/doStep1',
+           type:'post',
+           dataType:'jsonp',
+           jsonp:'callback',
+           data: register_form.serialize(),
+           success: function(data) {
+            if (data.status == 1) {
+               window.location.href="app/index.html";
+            } else {
+               alert(data.info);
+            }
+           },
+           error: function() {
+            alert("服务器没有返回数据，可能服务器忙，请重试");
+           }
+        });
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<div ng-include src="'partials/public/header_manage.html'"></div>  
+  <div class="container">
+      <span>
+	      <button class="btn btn-success " data-toggle="modal" data-target="#addMemberCardModal">
+	        <i class="fa fa-plus"></i> 新建会员
+	      </button>
+	      
+	      <div ng-controller="memberCardAddCtrl">
+		      <!-- 新建卡型 -->
+		      <div class="modal fade" id="addMemberCardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		        <div class="modal-dialog">
+		          <div class="modal-content">
+		            <div class="modal-header">
+		              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		              <h4 class="modal-title" id="myModalLabel">新建会员</h4>
+		            </div>
+		            <div class="modal-body">
+		            	<form class="form-horizontal" role="form">
+						  <div class="form-group">
+						    <label for="inputEmail3" class="col-sm-2 control-label">卡类型</label>
+						    <div class="col-sm-10">
+						        <select class="form-control" ng-model="membercard.CardCategory">
+								  <option value="积分卡">积分卡</option>
+								  <option value="普通卡">普通卡</option>
+								</select>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="card_number" class="col-sm-2 control-label">卡号</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="card_number" ng-model="membercard.card_number">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
+						    <div class="col-sm-10">
+						      <input type="text" class="form-control" id="name" ng-model="membercard.name">
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="inputPassword3" class="col-sm-2 control-label">性别</label>
+						    <div class="col-sm-10">
+						      <label class="radio-inline">
+								  <input type="radio" name="optionsRadios" id="inlineCheckbox1" value="1" ng-model="membercard.sex"> 男
+								</label>
+								<label class="radio-inline">
+								  <input type="radio" name="optionsRadios" id="inlineCheckbox2" value="2" ng-model="membercard.sex"> 女
+								</label>
+						    </div>
+						  </div>
+						  <div class="form-group">
+						    <label for="money" class="col-sm-2 control-label">充值金额</label>
+						    <div class="col-sm-10">
+						      <input type="password" class="form-control" id="money" ng-model="membercard.money">
+						    </div>
+						  </div>
+						  <a class="link" >更多...</a>
+						  <div >
+						  	
+						  </div>
+						</form>
+		            </div>
+		            <div class="modal-footer">
+		              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+		              <button type="button" class="btn btn-primary" ng-click="addMemberCard(membercard)">保存</button>
+		            </div>
+		          </div><!-- /.modal-content -->
+		        </div><!-- /.modal-dialog -->
+		      </div><!-- /.modal -->
+		    </div>
+      </span>
+      <span class="pull-right">
+      	<input type="text">
+      </span>
+      <hr>
+      <table class="table table-hover">
+	  	<thead>
+	  		<th>卡号</th>
+	  		<th>姓名</th>
+	  		<th>性别</th>
+	  		<th>卡型</th>
+	  		<th>办卡时间</th>
+	  		<th>操作</th>
+	  	</thead>
+	  	<tbody ng-controller="memberCardListCtrl">
+			<!-- On rows -->
+			<tr ng-repeat="membercard in membercards">
+				<td>{{membercard.card_number}}</td>
+				<td>{{membercard.name}}</td>
+				<td>{{membercard.sex}}</td>
+				<td>{{membercard.card_category}}</td>
+				<td>{{membercard.ctime}}</td>
+				<td><a href="#/edit/{{user.id}}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-pencil"></i></a></td>
+			</tr>
+	  	</tbody>
+	</table>
+  </div>
+  <!-- 侧边导航 -->
+  <nav class="app-switcher">
+    <ul class="list list-tabs">
+      <li>
+        <a href="#/cardcategory" class="app">
+          <span class="fa fa-credit-card"></span>
+          <span>会员卡</span>
+        </a>      
+      </li>
+      <li>
+        <a href="#/member" class="app active">
+          <span class="fa fa-users"></span>
+          <span>会员</span>
+        </a>  
+      </li>
+      <li>
+        <a href="#/credit" class="app">
+          <span class="fa fa-gift"></span>
+          <span>兑换</span>
+        </a>  
+      </li>
+      <li>
+        <a href="#/analysis" class="app">
+          <span class="fa fa-clock-o"></span>
+          <span>回顾</span>
+        </a>  
+      </li>
+      <li>
+        <a href="#/setting" class="app">
+          <span class="fa fa-cogs"></span>
+          <span>偏好</span>
+        </a>  
+      </li>
+    </ul>
+  </nav>

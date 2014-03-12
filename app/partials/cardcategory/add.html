@@ -1,0 +1,66 @@
+<!-- 新建卡型 -->
+<div class="modal fade" id="{{modalId}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">{{modalTitle}}</h4>
+      </div>
+      <div class="modal-body">
+        <form novalidate role="form">
+          <legend>基本信息</legend>
+          <div class="form-group">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入卡名称" ng-model="card.name">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="2" placeholder="请输入备注"  ng-model="card.description" ></textarea>
+          </div>
+          <legend>功能设置</legend>
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="card.is_consume"> 消费
+              </label>
+            </div>
+              <div class="checkbox" ng-show="card.is_consume" style="margin-left:10px;">
+                <label>
+                  <input type="checkbox" ng-model="card.is_discount" > 消费折扣
+                </label>
+              </div>
+                <div ng-show="card.is_discount" class="row" style="margin-left:15px;">
+                  <div class="col-xs-6">
+                    打 <input type="text" ng-model="card.consume_discount" style="width:50px;"> 折 
+                  </div>
+                </div>
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="card.is_recharge"> 充值
+              </label>
+            </div>
+              <div ng-show="card.is_recharge">
+              </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="card.is_credit"> 积分
+              </label>
+            </div>
+              <div ng-show="card.is_credit" class="row" style="margin-left:10px;">
+                <div>
+                  开卡送 <input type="text" ng-model="card.active_award_credits" style="width:50px;"> 积分 
+                </div>
+                <div style="margin-top:5px;">
+                  每消费 <input type="text" ng-model="card.consume_award_credits" style="width:50px;"> 元,送1积分
+                </div>
+              </div>
+            <span class="help-block">请选择您需要的功能.</span> 
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" ng-click="addCard(card)">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

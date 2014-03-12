@@ -1,0 +1,61 @@
+﻿.article .item-step2 {
+	width: 880px;
+	margin: 0 auto;
+	position: relative;
+}	
+.article .step {
+line-height: 20px;
+font-size: 14px;
+border-bottom: 2px solid #999;
+text-align: center;
+overflow: hidden;
+zoom: 1;
+}
+
+.step1, .step2, .step3 {
+	background: url(image/pic-step.png) no-repeat;
+	padding: 0 0 8px 0;
+	display: inline-block;
+	margin: 0 50px;
+	_background: url(image/pic-step.gif) no-repeat;
+}
+
+.article .step1 {
+background-position: 0 0;
+width: 185px;
+height: 33px;
+margin-top:20px;
+}
+
+.article .step2 {
+background-position: 0 -99px;
+width: 185px;
+height: 33px;
+margin-top:20px;
+
+}
+.article .step3 {
+background-position: 0 -182px;
+width: 207px;
+height: 27px;
+margin-top:20px;
+}
+.article .step1-current {
+background-position: 0 -51px;
+width: 185px;
+height: 33px;
+margin-top:20px;
+
+}
+
+.article .step2-current {
+background-position: 0 -141px;
+width: 185px;
+height: 33px;
+}
+
+.article .step3-current {
+background-position: 0 -224px;
+width: 207px;
+height: 27px;
+}

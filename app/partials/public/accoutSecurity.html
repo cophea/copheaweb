@@ -1,0 +1,37 @@
+<!-- 修改密码 -->
+<div class="modal fade" id="account_password_edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">原始密码</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" ng-model="security.oldpassword">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">新密码</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" ng-model="security.password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label">确认密码</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword" ng-model="security.repassword">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary" ng-click="doChange(security);">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

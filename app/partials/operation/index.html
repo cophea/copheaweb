@@ -1,0 +1,81 @@
+<header class="navbar bs-docs-nav" role="banner">
+  <div class="navbar-inner">
+    <div class="nav left-side"><h4>cophea</h4></div>
+    <ul class="nav right-side">
+      <li><a id="element" href="#/cardcategory"><i class="fa fa-chevron-right"></i> 管理</a></li>
+      |
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{userinfo.uname}}<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li>
+            <a data-toggle="modal" data-target="#account_profile_edit">编辑帐户</a>
+          </li>
+          <li>
+            <a data-toggle="modal" data-target="#account_password_edit">修改密码</a>
+          </li>
+          <li>
+            <a ng-click="logout();">退出</a>
+          </li>
+        </ul>
+      </li>
+      |
+      <li><a><i class="fa fa-question-circle"></i></a></li>
+    </ul>
+  </div>
+</header>
+<div ng-controller="accoutEditCtrl"><div accout-Edit></div></div>
+<div ng-controller="accoutSecurityCtrl"><div accout-Security></div></div>
+
+<div class="portal-view">
+  <ul class="project-category">
+    <li class="project-category-item personal">
+      <div class="project-category-title">
+        <input type="text"/><a class="btn btn-primary">搜索会员</a>
+      </div>
+      
+      <ul class="projects clearfix organization-null" style="margin-top:100px;">
+        <li class="project pull-left" style="background-image:url(https://striker.teambition.com/thumbnail/98/f8/ade4eea20d199cea28ce6930a455.jpg/w/200/h/200);"  data-toggle="modal" data-target="#xiaofeimodal"> 
+          <div class="project-info" >
+            消费
+          </div>
+        </li>
+
+        <li class="project pull-left" data-id="5305df5ebabe2f404275ded1" style="background-image:url(https://dn-st.qbox.me/v3/images/application/project/cover-media.jpg);">
+          <div class="project-info">
+            充值
+          </div>
+        </li>
+        
+        <li class="project pull-left" data-id="5305df5ebabe2f404275ded1" style="background-image:url(https://dn-st.qbox.me/v3/images/application/project/cover-media.jpg);">
+          <div class="project-info">
+            发卡
+          </div>
+        </li>
+
+        <li class="project pull-left" data-id="5305df5ebabe2f404275ded1" style="background-image:url(https://dn-st.qbox.me/v3/images/application/project/cover-media.jpg);">
+          <div class="project-info">
+            撤销
+          </div>
+        </li>
+
+        <li class="project pull-left" data-id="5305df5ebabe2f404275ded1" style="background-image:url(https://dn-st.qbox.me/v3/images/application/project/cover-media.jpg);">
+          <div class="project-info">
+            兑换
+          </div>
+        </li>
+
+        <li class="portal-placeholder"></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<script type="text/javascript">
+    $(".portal-view .project").hover(function(){
+        $(this).stop().animate({'bottom':'10'},150);
+    },function(){
+      $(this).stop().animate({'bottom':'0'},160);
+    })
+    $(".portal-view .project").on('click',function(){
+      $(this).stop().animate({'bottom':'0'},160);
+    })
+</script>

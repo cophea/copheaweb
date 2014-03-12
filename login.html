@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登录 - cophea</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="./assets/image/cophealogo-s.png">
+    <link rel='stylesheet' href='https://dn-ui.qbox.me/v319/UI/css/teambition-ui.css?20130911'>
+    <link rel="stylesheet" href="./assets/css/form.css">
+    <style>
+      a > img{
+       display:none;
+      }
+      .placeholder{
+        color: #a6a6a6;
+      }
+      input.form-control{
+        padding: 15px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <aside style="background-image: url(./assets/image/login.jpg);" class="aside-bar">
+      <div class="aside-bar-container"></div>
+    </aside>
+    <section class="content"><a class="brand">
+        <h1>cophea</h1></a>
+        <div class="form-unit">
+        
+        <h2>即刻登录会员卡</h2>
+        
+        
+        <form id="ajax_login_form" class="signup-form form-horizontal" >
+          
+          <input type="hidden" name="client_id" value="6b83ecde2891d635908c7990123e1128">
+          <input type="email" id="account_input" placeholder='您的邮箱' name="login_email" value="" class="form-control">
+          <input type="password" id="pwd_input" placeholder='您的密码' name="login_password" class="form-control">
+          <input type="hidden" name="next" value="">
+          <input type="hidden" name="refer" value="">
+          <input type="hidden" name="access_token" value="">
+          <input type="hidden" name="projectHash" value="">
+          <div class="action-wrapper">
+            <button type="button" class="btn btn-primary btn-large" onClick="login();">登录</button>
+            
+            <a href="register.html" class="signup">注册</a><span>
+            <!-- |</span><a href="/forgot" class="forget">忘记密码</a> -->
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="https://dn-st.qbox.me/pages/scripts/analytics.js"></script>
+    <script src="https://dn-st.qbox.me/pages/scripts/jquery.min.js"></script>
+    <script src="https://dn-st.qbox.me/pages/scripts/jquery.placeholder.js"></script>
+    <script type="text/javascript">
+      $('input, textarea').placeholder();
+    </script>
+  </body>
+</html>
+<script>
+function login(){
+  var login_Form_obj = $("#ajax_login_form");
+  var account_input_obj = $('#account_input');
+  var pwd_input_obj = $('#pwd_input');
+  if(account_input_obj.val().length == 0) {
+    $('#account_input').focus();
+    return false;
+  }
+  if(pwd_input_obj.val().length == 0) {
+    $('#pwd_input').focus();
+    return false;
+  }  
+  $.ajax({
+     url:'http://localhost:10088/cophea/copheaserver/api/Passport/doLogin',
+     type:'post',
+     dataType:'jsonp',
+     jsonp:'callback',
+     data: login_Form_obj.serialize(),
+     success: function(data) {
+      if (data.status == 1) {
+         window.location.href="app/#/operation";
+      } else {
+         alert(data.info);
+      }
+     },
+     error: function() {
+      alert("服务器没有返回数据，可能服务器忙，请重试");
+     }
+  });
+}
+
+$(function(){
+  var login_Form_obj = $("#ajax_login_form");
+  login_Form_obj.keydown(function(e){
+    var e = e||event;
+    keycode = e.which||e.keyCode;
+    if(keycode==13){
+      login();
+    }
+  })
+})
+</script>

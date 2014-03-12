@@ -1,0 +1,27 @@
+<header class="navbar bs-docs-nav" role="banner">
+  <div class="navbar-inner">
+    <div class="nav left-side"><h4>cophea</h4></div>
+    <ul class="nav right-side">
+      <li><a id="element" href="#/operation"><i class="fa fa-chevron-left"></i> 操作</a></li>
+      |
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">{{userinfo.uname}}<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li>
+            <a data-toggle="modal" data-target="#account_profile_edit">编辑帐户</a>
+          </li>
+          <li>
+            <a data-toggle="modal" data-target="#account_password_edit">修改密码</a>
+          </li>
+          <li>
+            <a ng-click="logout();">退出</a>
+          </li>
+        </ul>
+      </li>
+      |
+      <li><a><i class="fa fa-question-circle"></i></a></li>
+    </ul>
+  </div>
+</header>
+<div ng-controller="accoutEditCtrl"><div accout-Edit></div></div>
+<div ng-controller="accoutSecurityCtrl"><div accout-Security></div></div>
